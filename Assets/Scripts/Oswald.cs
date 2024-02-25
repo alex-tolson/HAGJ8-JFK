@@ -15,6 +15,11 @@ public class Oswald : MonoBehaviour
 
     void Start()
     {
+        _anim = GetComponent<Animator>();
+        if (_anim == null)
+        {
+            Debug.LogError("Oswald::Animator is null");
+        }
         _uiManager_3 = GameObject.Find("UIManager_3").GetComponent<UIManager_3>();
         if (_uiManager_3 == null)
         {
@@ -39,7 +44,6 @@ public class Oswald : MonoBehaviour
         }
         else
         {
-            _anim.SetBool("Walking", true);
             OswaldMov();
         }   
         if (_dist < 0.05f)
@@ -51,6 +55,7 @@ public class Oswald : MonoBehaviour
     public void OswaldMov()
     {
         transform.position = Vector3.MoveTowards(transform.position, _doorFrame, _speed * Time.deltaTime);
+        _anim.SetBool("Walking", true);
     }
 
     

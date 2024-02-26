@@ -7,7 +7,7 @@ public class PointsOfInterest : MonoBehaviour
 
     [SerializeField] private GameObject _poiCartonsPhysicalLocation, _poiPaperSack, _poiBulletCasings, _poiReceipt, _poiRifle,
         _poiCartons, _playerActions;
-    [SerializeField] private float _distance;
+    //[SerializeField] private float _distance;
     [SerializeField] private GameObject _player;
     private AudioManager _audioManager;
     //[SerializeField] private float _fadeawaySpeed;
@@ -17,20 +17,12 @@ public class PointsOfInterest : MonoBehaviour
     void Start()
     {
         _audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        if(_audioManager==null)
+        {
+            Debug.LogError("PointsOfInterest::AudioManager is null");
+        }
     }
 
-    private void Update()
-    {
-        _distance = Vector3.Distance(_poiCartonsPhysicalLocation.transform.position,_player.transform.position);
-        if (_cartons.activeInHierarchy == false)
-        { 
-            _poiCartons.SetActive(false);
-        }
-        else if (_distance < 4.5f)
-        {
-            _poiCartons.SetActive(true);
-        }
-    }
 
     public void CartonsFadeAway()
     {

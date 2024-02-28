@@ -2,35 +2,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIManager_3 : MonoBehaviour
 {
     [SerializeField] private GameObject _panelOswaldConvo;
     [SerializeField] private TMP_Text _convoTextPlayer;
     [SerializeField] private TMP_Text _convoTextOswald;
-    private int _iteration = 0;
     [SerializeField] private GameObject _oswald;
     [SerializeField] private GameObject _button_next;
     [SerializeField] private GameObject _button_endConvo;
-    //private Scene _currentScene;
-    //[SerializeField] private int _currentSceneBuildIndex;
+    private GameManager _gameManager;
+    [SerializeField] private int _currentSceneBuildIndex;
+     [SerializeField] private float _dist;
+    [SerializeField] private GameObject _player;
+    [SerializeField] private GameObject _enterButton;
+    [SerializeField] private GameObject _6thFloorEmpty;
 
- 
     private void OnEnable()
     {
-            //SceneManager.sceneLoaded += OnSceneLoaded;
-        
-        _iteration++;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
 
-        if (_iteration > 1)
+    private void Start()
+    {
+        _gameManager = GameObject.Find("Main Camera").GetComponent<GameManager>();
+        _gameManager.OswaldIteration();
+        if (_gameManager.WhatIsOswaldsIteration() > 1)
         {
             _oswald.SetActive(false);
         }
-        else 
+        else
         {
             _oswald.SetActive(true);
         }
     }//Oswald only appears the first time we go the TexasDepo 6th floor
+
 
     public void ActivateOswaldConvo()
     {
@@ -54,9 +61,28 @@ public class UIManager_3 : MonoBehaviour
         _button_endConvo.SetActive(true);
         _button_next.SetActive(false);
     }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        _currentSceneBuildIndex = scene.buildIndex;
+    }
+    public void EnterButton(int SceneNumber)
+    {
+        //Debug.Log("unloading " + this._currentScene.name);
+        SceneManager.UnloadSceneAsync(_currentSceneBuildIndex);
+        //Debug.Log("Loading async " + _currentScene.name);
+        SceneManager.LoadScene(SceneNumber, LoadSceneMode.Additive);
+    }
 
-    //private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    //{
-    //    _currentSceneBuildIndex = scene.buildIndex;
-    //}
+    private void Update()
+    {
+        _dist = Vector3.Distance(_6thFloorEmpty.transform.position,_player.transform.position);
+        if (_dist < 1f)
+        {
+            _enterButton.SetActive(true);
+        }
+        else
+        {
+            _enterButton.SetActive(false);
+        }
+    } 
 }

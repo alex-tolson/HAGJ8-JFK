@@ -8,13 +8,9 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private Sprite _select, _texDepo, _newCourt, _oldCourt, _reagansRoute;
-
     [SerializeField] SpriteRenderer _scene1_Select;
-
     [SerializeField] GameObject _confirmChoicePanel, _playerActions, _confirmEndSearchPanel, _responsePanel;
-
     [SerializeField] private bool _questionEyeWitness, _crowd1, _crowd2, _crowd3, _crowd4;
-
     [SerializeField] private TMP_Text _responseText;
     private Scene _currentScene;
     [SerializeField] private int _currentSceneBuildIndex;
@@ -57,8 +53,8 @@ public class UIManager : MonoBehaviour
 
     public void ConfirmSelection()
     {
-        Debug.Log("Load next scene");
-        Debug.Log("unloading " + this._currentScene.name);
+       // Debug.Log("Load next scene");
+       // Debug.Log("unloading " + this._currentScene.name);
         SceneManager.UnloadSceneAsync(_currentSceneBuildIndex);
         SceneManager.LoadScene(WhichSceneLoading(), LoadSceneMode.Additive);
     }
@@ -150,18 +146,23 @@ public class UIManager : MonoBehaviour
         if (_crowd1 == true)
         {
             _responseText.text = "It sounded like a high powered hunting rifle";
+            //save to Journal;
+            Journal.Instance._textCrowd1.text = _responseText.text;
         }
         if (_crowd2 == true)
         {
             _responseText.text = "I saw someone in the window of the Texas Schoolbook Depository building";
+            Journal.Instance._textCrowd2.text = _responseText.text;
         }
         if (_crowd3 == true)
         {
             _responseText.text = "Male, White shirt.  5 feet 10 inches, 160 lbs.";
+            Journal.Instance._textCrowd3.text = _responseText.text;
         }
         if (_crowd4 == true)
         {
             _responseText.text = "I heard 3 shots!";
+            Journal.Instance._textCrowd4.text = _responseText.text;
         }
     }
 

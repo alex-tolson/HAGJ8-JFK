@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _introPanel;
+    private Canvas _uiIntro;
     private Canvas _uiInstructions;
     [SerializeField] private int _currentSceneBuildIndex;
-    private Scene _currentScene;
+    [SerializeField] private int _iteration;
 
     private void OnEnable()
     {
@@ -17,35 +17,50 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         
+        _uiIntro = GameObject.Find("UI_Intro").GetComponent<Canvas>();
+        _uiInstructions = GameObject.Find("CanvasPage1").GetComponent<Canvas>();
+        if (_uiIntro == null)
+        {
+            Debug.Log("GameManager::UI_Intro is null");
+        }
         _uiInstructions = GameObject.Find("CanvasPage1").GetComponent<Canvas>();
         if (_uiInstructions != null)
-        { 
-            _uiInstructions.gameObject.SetActive(false); 
+        {
+            _uiInstructions.gameObject.SetActive(false);
         }
     }
     public void BeginGame()
     {
-        _introPanel.SetActive(false);
+        _uiIntro.gameObject.SetActive(false);
         _uiInstructions.gameObject.SetActive(false);
         SceneManager.LoadScene(1, LoadSceneMode.Additive);
     }
 
     public void SceneToInstructions()
     {
-        _introPanel.SetActive(false);
+        _uiIntro.gameObject.SetActive(false);
         _uiInstructions.gameObject.SetActive(true);
     }
 
     public void BackButton(int SceneNumber)
     {
-        Debug.Log("unloading " + this._currentScene.name);
+        //Debug.Log("unloading " + this._currentScene.name);
         SceneManager.UnloadSceneAsync(_currentSceneBuildIndex);
-        Debug.Log("Loading async " + _currentScene.name);
+        //Debug.Log("Loading async " + _currentScene.name);
         SceneManager.LoadScene(SceneNumber, LoadSceneMode.Additive);
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         _currentSceneBuildIndex = scene.buildIndex;
+    }
+
+    public void OswaldIteration()
+    {
+        _iteration++;
+    }
+    public int WhatIsOswaldsIteration()
+    {
+        return _iteration;
     }
 }

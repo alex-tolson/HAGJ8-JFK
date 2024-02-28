@@ -217,6 +217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1266070448}
   - component: {fileID: 1266070447}
+  - component: {fileID: 1266070449}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -290,6 +291,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1266070449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1266070445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08b9afe8bb0095e4f8c6e411383d19a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentSceneBuildIndex: 0
 --- !u!1001 &1471642024
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -309,7 +323,7 @@ PrefabInstance:
     - target: {fileID: 2816130841238490872, guid: dcc661eb530d2d546827641e7a85a33c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1266070449}
     - target: {fileID: 2816130841238490872, guid: dcc661eb530d2d546827641e7a85a33c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -368,11 +382,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5586479453286156602, guid: dcc661eb530d2d546827641e7a85a33c, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 86.8596
+      value: 65.1811
       objectReference: {fileID: 0}
     - target: {fileID: 5586479453286156602, guid: dcc661eb530d2d546827641e7a85a33c, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 30
+      value: 23.9782
       objectReference: {fileID: 0}
     - target: {fileID: 5586479453286156602, guid: dcc661eb530d2d546827641e7a85a33c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -404,11 +418,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5586479453286156602, guid: dcc661eb530d2d546827641e7a85a33c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1
+      value: 0.000020027
       objectReference: {fileID: 0}
     - target: {fileID: 5586479453286156602, guid: dcc661eb530d2d546827641e7a85a33c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -200.5
+      value: -204.1276
       objectReference: {fileID: 0}
     - target: {fileID: 5586479453286156602, guid: dcc661eb530d2d546827641e7a85a33c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -629,7 +643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}

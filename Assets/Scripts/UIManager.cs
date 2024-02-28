@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject _confirmChoicePanel, _playerActions, _confirmEndSearchPanel, _responsePanel;
     [SerializeField] private bool _questionEyeWitness, _crowd1, _crowd2, _crowd3, _crowd4;
     [SerializeField] private TMP_Text _responseText;
-    private Scene _currentScene;
+    //private Scene _currentScene;
     [SerializeField] private int _currentSceneBuildIndex;
 
     private void OnEnable()
@@ -50,7 +50,6 @@ public class UIManager : MonoBehaviour
         _confirmChoicePanel.SetActive(true);
         _playerActions.SetActive(false);
     }
-
     public void ConfirmSelection()
     {
        // Debug.Log("Load next scene");
@@ -58,7 +57,6 @@ public class UIManager : MonoBehaviour
         SceneManager.UnloadSceneAsync(_currentSceneBuildIndex);
         SceneManager.LoadScene(WhichSceneLoading(), LoadSceneMode.Additive);
     }
-
     private int WhichSceneLoading()
     {
         if (_scene1_Select.sprite == _texDepo)
@@ -88,7 +86,6 @@ public class UIManager : MonoBehaviour
             return 6;
         }
     }
-
     public void ChangeSelection()
     {
         _scene1_Select.sprite =_select;
@@ -100,7 +97,6 @@ public class UIManager : MonoBehaviour
         _crowd4 = false;
 
     }
-
     public void ActionToCrowd1()
     {
         Debug.Log("clicked on crowd 1");
@@ -148,21 +144,25 @@ public class UIManager : MonoBehaviour
             _responseText.text = "It sounded like a high powered hunting rifle";
             //save to Journal;
             Journal.Instance._textCrowd1.text = _responseText.text;
+            Journal.Instance._evidenceCounter++;
         }
         if (_crowd2 == true)
         {
             _responseText.text = "I saw someone in the window of the Texas Schoolbook Depository building";
             Journal.Instance._textCrowd2.text = _responseText.text;
+            Journal.Instance._evidenceCounter++;
         }
         if (_crowd3 == true)
         {
             _responseText.text = "Male, White shirt.  5 feet 10 inches, 160 lbs.";
             Journal.Instance._textCrowd3.text = _responseText.text;
+            Journal.Instance._evidenceCounter++;
         }
         if (_crowd4 == true)
         {
             _responseText.text = "I heard 3 shots!";
             Journal.Instance._textCrowd4.text = _responseText.text;
+            Journal.Instance._evidenceCounter++;
         }
     }
 
@@ -209,4 +209,5 @@ public class UIManager : MonoBehaviour
     {
         _currentSceneBuildIndex = scene.buildIndex;
     }
+
 }

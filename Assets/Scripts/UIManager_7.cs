@@ -51,13 +51,19 @@ public class UIManager_7 : MonoBehaviour
     public void ButtonDust()
     {
         _responseText.text = "You don't see any fingerprints on these bullet fragments.";
+        Journal.Instance._dustBulletFragments.text = _responseText.text;
+        Journal.Instance._evidenceCounter++;
     }
     public void ButtonAnalyze()
     {
         _responseText.text = "If we can find the barrel that made these markings on the bullet fragments, we'll have found our weapon.";
+        Journal.Instance._analyzeBulletFragments.text = _responseText.text;
+        Journal.Instance._evidenceCounter++;
     }
     public void ButtonInspect()
     {
         _responseText.text = "If we can match these to the shell casings and the rifle, we'll have found our weapon.";
+        Journal.Instance._inspectBulletFragments.text = _responseText.text;
+        Journal.Instance._evidenceCounter++;
     }
 }

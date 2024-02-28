@@ -4595,6 +4595,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1078962573}
     - target: {fileID: 6201464745802758928, guid: 600c4697619cffa4da0c6caf9dabac08, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.5294118
+      objectReference: {fileID: 0}
+    - target: {fileID: 6201464745802758928, guid: 600c4697619cffa4da0c6caf9dabac08, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.5137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 6201464745802758928, guid: 600c4697619cffa4da0c6caf9dabac08, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1078962573}
@@ -4725,6 +4733,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 1078962572}
     m_Modifications:
     - target: {fileID: 1712691221823153080, guid: c00e71adca196c34b9f23768bc6441de, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.5294118
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712691221823153080, guid: c00e71adca196c34b9f23768bc6441de, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.5137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712691221823153080, guid: c00e71adca196c34b9f23768bc6441de, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1078962573}
@@ -4733,9 +4749,25 @@ PrefabInstance:
       value: ConfirmEndSearchPanel
       objectReference: {fileID: 0}
     - target: {fileID: 5244820537517983694, guid: c00e71adca196c34b9f23768bc6441de, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.5294118
+      objectReference: {fileID: 0}
+    - target: {fileID: 5244820537517983694, guid: c00e71adca196c34b9f23768bc6441de, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.5137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 5244820537517983694, guid: c00e71adca196c34b9f23768bc6441de, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1078962573}
+      objectReference: {fileID: 1265999970}
+    - target: {fileID: 5244820537517983694, guid: c00e71adca196c34b9f23768bc6441de, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseInvestigation
+      objectReference: {fileID: 0}
+    - target: {fileID: 5244820537517983694, guid: c00e71adca196c34b9f23768bc6441de, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5422955513378051684, guid: c00e71adca196c34b9f23768bc6441de, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

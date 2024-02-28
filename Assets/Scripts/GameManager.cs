@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     private Canvas _uiIntro;
     private Canvas _uiInstructions;
+    private GameObject _creditsPanel;
     [SerializeField] private int _currentSceneBuildIndex;
     [SerializeField] private int _iteration;
 
@@ -41,6 +42,18 @@ public class GameManager : MonoBehaviour
         _uiIntro.gameObject.SetActive(false);
         _uiInstructions.gameObject.SetActive(true);
     }
+    public void CreditsScene()
+    {
+        _uiIntro.gameObject.SetActive(false);
+        _uiInstructions.gameObject.SetActive(false);
+        _creditsPanel.SetActive(true);
+    }
+    public void BackToIntro()
+    {
+        _uiIntro.gameObject.SetActive(true);
+        _uiInstructions.gameObject.SetActive(false);
+        _creditsPanel.SetActive(false);
+    }
 
     public void BackButton(int SceneNumber)
     {
@@ -62,5 +75,11 @@ public class GameManager : MonoBehaviour
     public int WhatIsOswaldsIteration()
     {
         return _iteration;
+    }
+    public void CloseInvestigation()
+    {
+        SceneManager.UnloadSceneAsync(_currentSceneBuildIndex);
+        Journal.Instance._endingPanel.SetActive(true);
+        Journal.Instance.RankPlayer();
     }
 }

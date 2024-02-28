@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
 
 public class PlayerActions : MonoBehaviour
 {
@@ -36,12 +35,11 @@ public class PlayerActions : MonoBehaviour
     {
         _responsePanel.SetActive(false);
     }
-    public void EndingInvestigation()
-    {
-        //work up how the win and lose are tallied;
-        Debug.Log("spit out response on Win/Lose screen");
-        //SceneManager.LoadScene(8);
-    }
+    //public void EndingInvestigation()
+    //{
+    //    Journal.Instance.RankPlayer();
+    //    Journal.Instance._endingPanel.SetActive(true);
+    //}
     public void DoNOTEndInvestigation()
     {
         //closeConfirmEndSearch Panel
@@ -85,23 +83,27 @@ public class PlayerActions : MonoBehaviour
         if (_paperSack)
         {
             _responseText.text = "There are no fingerprints on the paper sack.";
+            Journal.Instance._dustPaperSack.text = _responseText.text;
+            Journal.Instance._evidenceCounter++;
         }
         if (_bulletCasings)
         {
             _responseText.text = "There are no fingerprints on the bullet casings.";
+            Journal.Instance._dustBulletCasings.text = _responseText.text;
+            Journal.Instance._evidenceCounter++;
         }
         if (_receipt)
         {
             _responseText.text = "There are fingerprints on the receipt. They match Lee Oswald in the database.";
+            Journal.Instance._dustReceipt.text = _responseText.text;
+            Journal.Instance._evidenceCounter++;
         }
         if (_rifle)
         {
             _responseText.text = "There are no fingerprints on the rifle.";
+            Journal.Instance._dustRifle.text = _responseText.text;
+            Journal.Instance._evidenceCounter++;
         }
-        //if (_bulletFragments)
-        //{
-        //    _responseText.text = "There is a partial fingerprint from being loaded into the magazine.";
-        //}
     }
     //---------------------------
     public void ButtonAnalyze()
@@ -110,23 +112,27 @@ public class PlayerActions : MonoBehaviour
         if (_paperSack)
         {
             _responseText.text = "This papersack could have been obtained from any store.  It's generic.";
+            Journal.Instance._analyzePaperSack.text = _responseText.text;
+            Journal.Instance._evidenceCounter++;
         }
         if (_bulletCasings)
         {
             _responseText.text = "They have a distinctive markings on them that match the barrel of the rifle.";
+            Journal.Instance._analyzeBulletCasings.text = _responseText.text;
+            Journal.Instance._evidenceCounter++;
         }
         if (_receipt)
         {
             _responseText.text = "This is a fake signature.  The handwriting matches Lee Oswald.";
+            Journal.Instance._analyzeReceipt.text = _responseText.text;
+            Journal.Instance._evidenceCounter++;
         }
         if (_rifle)
         {
             _responseText.text = "This barrel would have left machine markings on the bullet and casings.";
+            Journal.Instance._analyzeRifle.text = _responseText.text;
+            Journal.Instance._evidenceCounter++;
         }
-        //if (_bulletFragments)
-        //{
-        //    _responseText.text = "They have a distinctive markings on them that match the barrel of the rifle.";
-        //}
     }
     //---------------------------
     public void ButtonInspect()
@@ -135,24 +141,27 @@ public class PlayerActions : MonoBehaviour
         if (_paperSack)
         {
             _responseText.text = "It's a regular paper sack with an invoice inside.";
+            Journal.Instance._inspectPaperSack.text = _responseText.text;
+            Journal.Instance._evidenceCounter++;
         }
         if (_bulletCasings)
         {
             _responseText.text = "These casings are the exact caliber of the rifle.  They came from this rifle.";
-
+            Journal.Instance._inspectBulletCasings.text = _responseText.text;
+            Journal.Instance._evidenceCounter++;
         }
         if (_receipt)
         {
             _responseText.text = "The handwriting on the receipt matches the Invoice signature for A. Haddell.";
+            Journal.Instance._inspectReceipt.text = _responseText.text;
+            Journal.Instance._evidenceCounter++;
         }
         if (_rifle)
         {
-            _responseText.text = "This is a high-powered hunting rifle. Just like the eyewitness described.";    
+            _responseText.text = "This is a high-powered hunting rifle. Just like the eyewitness described.";
+            Journal.Instance._inspectRifle.text = _responseText.text;
+            Journal.Instance._evidenceCounter++;
         }
-        //if (_bulletFragments)
-        //{
-        //    _responseText.text = "If we can find the shell casings that belong to these fragments, we can match them.";
-        //}
     }
     //---------------------------
 }

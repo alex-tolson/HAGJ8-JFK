@@ -13,6 +13,10 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         _audiosource = GetComponent<AudioSource>();
+        if (_audiosource == null)
+        {
+            Debug.LogError("AudioManager::Audiosource is null");
+        }
     }
 
     public void PlayClick()

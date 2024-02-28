@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private Sprite _select, _texDepo, _newCourt, _oldCourt, _reagansRoute;
@@ -15,6 +16,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] private bool _questionEyeWitness, _crowd1, _crowd2, _crowd3, _crowd4;
 
     [SerializeField] private TMP_Text _responseText;
+    private Scene _currentScene;
+    [SerializeField] private int _currentSceneBuildIndex;
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
 
     public void SelectTexDepo()
     {
@@ -46,42 +54,42 @@ public class UIManager : MonoBehaviour
         _confirmChoicePanel.SetActive(true);
         _playerActions.SetActive(false);
     }
-    public void LoadNextScene(int scene)
-    {
-        SceneManager.LoadScene(scene);
-    }
 
     public void ConfirmSelection()
     {
         Debug.Log("Load next scene");
-        WhichSceneLoading();
+        Debug.Log("unloading " + this._currentScene.name);
+        SceneManager.UnloadSceneAsync(_currentSceneBuildIndex);
+        SceneManager.LoadScene(WhichSceneLoading(), LoadSceneMode.Additive);
     }
 
-    private void WhichSceneLoading()
+    private int WhichSceneLoading()
     {
         if (_scene1_Select.sprite == _texDepo)
         {
-            //return 4
-            //_selectionPanel.SetActive(false);
-            Debug.Log("loading texas depository");
+            _confirmChoicePanel.SetActive(false);
+            return 2;
         }
-        if (_scene1_Select.sprite == _newCourt)
+        else if (_scene1_Select.sprite == _newCourt)
         {
-            //return 6
-            //_selectionPanel.SetActive(false);
+
+            _confirmChoicePanel.SetActive(false);
             Debug.Log("loading new Court house");
+            return 4;
         }
-        if (_scene1_Select.sprite == _oldCourt)
+        else if (_scene1_Select.sprite == _oldCourt)
         {
-            //return 7
-            //_selectionPanel.SetActive(false);
+            
+            _confirmChoicePanel.SetActive(false);
             Debug.Log("loading old court house");
+            return 5;
         }
-        if (_scene1_Select.sprite == _reagansRoute)
+        else
         {
-            //return 8
-            //_selectionPanel.SetActive(false);
+
+            _confirmChoicePanel.SetActive(false);
             Debug.Log("loading car scene");
+            return 6;
         }
     }
 
@@ -196,5 +204,8 @@ public class UIManager : MonoBehaviour
     {
         _responsePanel.SetActive(false);
     }
-
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        _currentSceneBuildIndex = scene.buildIndex;
+    }
 }

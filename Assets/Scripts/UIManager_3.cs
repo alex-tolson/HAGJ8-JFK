@@ -11,11 +11,15 @@ public class UIManager_3 : MonoBehaviour
     private int _iteration = 0;
     [SerializeField] private GameObject _oswald;
     [SerializeField] private GameObject _button_next;
-    [SerializeField] private GameObject _button_endConvo
-        ;
+    [SerializeField] private GameObject _button_endConvo;
+    //private Scene _currentScene;
+    //[SerializeField] private int _currentSceneBuildIndex;
 
+ 
     private void OnEnable()
     {
+            //SceneManager.sceneLoaded += OnSceneLoaded;
+        
         _iteration++;
 
         if (_iteration > 1)
@@ -50,4 +54,9 @@ public class UIManager_3 : MonoBehaviour
         _button_endConvo.SetActive(true);
         _button_next.SetActive(false);
     }
+
+    //private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    //{
+    //    _currentSceneBuildIndex = scene.buildIndex;
+    //}
 }

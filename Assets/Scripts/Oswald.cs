@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Oswald : MonoBehaviour
 {
@@ -58,5 +59,6 @@ public class Oswald : MonoBehaviour
         _anim.SetBool("Walking", true);
     }
 
-    
+
+
 }

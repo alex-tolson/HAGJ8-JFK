@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
-using Unity.VisualScripting;
 
 public class PlayerActions : MonoBehaviour
 {
@@ -78,6 +77,7 @@ public class PlayerActions : MonoBehaviour
         _receipt = false;
         _rifle = true;
     }
+
     //=============================
     public void ButtonDust()
     {
@@ -98,7 +98,12 @@ public class PlayerActions : MonoBehaviour
         {
             _responseText.text = "There are no fingerprints on the rifle.";
         }
+        //if (_bulletFragments)
+        //{
+        //    _responseText.text = "There is a partial fingerprint from being loaded into the magazine.";
+        //}
     }
+    //---------------------------
     public void ButtonAnalyze()
     {
         _responsePanel.SetActive(true);
@@ -118,7 +123,12 @@ public class PlayerActions : MonoBehaviour
         {
             _responseText.text = "This barrel would have left machine markings on the bullet and casings.";
         }
+        //if (_bulletFragments)
+        //{
+        //    _responseText.text = "They have a distinctive markings on them that match the barrel of the rifle.";
+        //}
     }
+    //---------------------------
     public void ButtonInspect()
     {
         _responsePanel.SetActive(true);
@@ -139,6 +149,11 @@ public class PlayerActions : MonoBehaviour
         {
             _responseText.text = "This is a high-powered hunting rifle. Just like the eyewitness described.";    
         }
+        //if (_bulletFragments)
+        //{
+        //    _responseText.text = "If we can find the shell casings that belong to these fragments, we can match them.";
+        //}
     }
+    //---------------------------
 }
 

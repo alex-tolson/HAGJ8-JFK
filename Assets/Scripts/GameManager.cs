@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     private Canvas _uiIntro;
     private Canvas _uiInstructions;
-    private GameObject _creditsPanel;
+    
     [SerializeField] private int _currentSceneBuildIndex;
     [SerializeField] private int _iteration;
 
@@ -41,20 +42,39 @@ public class GameManager : MonoBehaviour
     {
         _uiIntro.gameObject.SetActive(false);
         _uiInstructions.gameObject.SetActive(true);
+        //Journal.Instance._creditsPanel.SetActive(true);
+        Journal.Instance._backIntroButton.SetActive(true);
     }
     public void CreditsScene()
     {
         _uiIntro.gameObject.SetActive(false);
         _uiInstructions.gameObject.SetActive(false);
-        _creditsPanel.SetActive(true);
+        Journal.Instance._creditsPanel.SetActive(true);
+        Journal.Instance._backIntroButton.SetActive(true);
     }
     public void BackToIntro()
     {
         _uiIntro.gameObject.SetActive(true);
         _uiInstructions.gameObject.SetActive(false);
-        _creditsPanel.SetActive(false);
+        Journal.Instance._creditsPanel.SetActive(false);
+    }
+    public void RestartGame()
+    {
+
+        SceneManager.LoadScene(0);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            QuitGame();
+        }
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
     public void BackButton(int SceneNumber)
     {
         //Debug.Log("unloading " + this._currentScene.name);

@@ -24,12 +24,13 @@ public class Journal : MonoBehaviour
     public float _evidenceCounter = 0;
     public float _evidenceTotal = 20;
     public TMP_Text _rank;
-    public GameObject _endingPanel;
+    public GameObject _endingPanel, _creditsPanel, _backIntroButton;
 
     private void Awake()
     {
         _instance = this;
     }
+
 
     public void RankPlayer()
     {
